@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Row from "./Row/Row";
 import style from './Table.module.scss'
 import CoinModalWindow from "../../ModalWindow/CoinModalWindow";
@@ -6,14 +6,10 @@ import {getCoinsPortion} from "../../../api/api";
 import {TestContext} from "../../../Context/testContext";
 import Paginator from "./Paginator/Paginator";
 
-type TableProps = {
-    portionContext: any[]
-}
-const Table: React.FC<TableProps> = ({portionContext}, props) => {
+const Table: React.FC = () => {
     const [modalToggle, setModalToggle] = useState(false)
-    const [currentPage, serCurrentPage] = useState(2)
-    // @ts-ignore
-    const [portionCoins, setPortionCoins]: [CurrentCoinType, (axiosResponse: axios.AxiosResponse<any>) => void] = useState([])
+    const [currentPage, serCurrentPage] = useState(1)
+    const [portionCoins, setPortionCoins] = useState([])
 
     const context = useContext(TestContext)
 
@@ -37,16 +33,17 @@ const Table: React.FC<TableProps> = ({portionContext}, props) => {
     }
 
     const CoinsElements = portionCoins?.map((item: { id: string; priceUsd: number; rank: number; }) => <Row
-        name={item.id} price={item.priceUsd} rank={item.rank} key={item.id} openModalWindow={openModalWindow}/>)
+        name={item.id} price={item.priceUsd} rank={item.rank} key={item.id} setModalToggle={openModalWindow}/>)
 
     const onPageChange = (page: number) => {
         async function fetchData() {
-        try {
-            setPortionCoins(await getCoinsPortion(page))
-        } catch (err) {
-            console.log(err);
+            try {
+                setPortionCoins(await getCoinsPortion(page))
+            } catch (err) {
+                console.log(err);
+            }
         }
-    }
+
         fetchData();
 
     }
@@ -63,7 +60,7 @@ const Table: React.FC<TableProps> = ({portionContext}, props) => {
                 {CoinsElements}
                 <Paginator onPageChange={onPageChange} currentPage={currentPage}/>
             </div>
-            {modalToggle ? <CoinModalWindow removeWindow={removeWindow} name={'CurrentCoin'}/> : <></>}
+            {modalToggle ? <CoinModalWindow removeWindow={removeWindow}/> : <></>}
         </div>
 
     );

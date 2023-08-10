@@ -1,16 +1,14 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import style from './CurrencyPage.module.scss'
 import {useParams} from "react-router-dom";
-import {CurrentCoinType, initialState, TestContext} from "../../Context/testContext";
+import {initialState, TestContext} from "../../Context/testContext";
+import {CurrentCoinType} from "../../Context/ContextTypes";
 
 const CurrencyPage = () => {
     const useParam = useParams()
     console.log(useParam.coinId)
     const context = useContext(TestContext)
     let currentCoin: CurrentCoinType = initialState.currentCoin
-    useEffect(() => {
-        console.log('привеь')
-    }, [])
 
     if (useParam.coinId) {
         currentCoin = context.getCoinById(useParam.coinId.toString())

@@ -8,12 +8,11 @@ a {
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  padding-right: 60px;
+  padding: 5px 60px 5px 0;
   span{
     margin-left: 60px;
     min-width: 80px;
   }
-  border: 1px solid red;
 }
 .addButton{
   height: 35px;

@@ -8,10 +8,10 @@ type PropsType = {
     price: number,
     rank: number,
     key: string,
-    openModalWindow?: () => void
+    setModalToggle?: (state: boolean) => void
 }
 
-const Row: React.FC<PropsType> = ({name, price, rank, key, openModalWindow}) => {
+const Row: React.FC<PropsType> = ({name, price, rank, key, setModalToggle}) => {
 
     const context = useContext(TestContext)
 
@@ -19,14 +19,21 @@ const Row: React.FC<PropsType> = ({name, price, rank, key, openModalWindow}) => 
         context.setCurrentCoin(rank)
     }
 
+    const onButtonClick = () => {
+        context.setCurrentCoin(rank)
+        if (setModalToggle) {
+            setModalToggle(true)
+        }
+    }
+
     return (
-        <div className={style.row}>
+        <div key={key} className={style.row}>
             <NavLink onClick={onClick} to={'/currency-page/' + name}>
                 <span>{name}</span>
                 <span>{rank}</span>
                 <span>{price}</span>
             </NavLink>
-            <button onClick={openModalWindow} className={style.addButton}>+</button>
+            <button onClick={onButtonClick} className={style.addButton}>+</button>
         </div>
     );
 };

@@ -7,7 +7,7 @@ const instance = axios.create({
     baseURL: 'https://api.coincap.io/v2/',
 })
 
-type GetCoinPropsType ={
+type GetCoinPropsType = {
     id: number
 }
 
@@ -21,5 +21,11 @@ export const getCoinsPortion = async (portionNumber: number) => {
     return (
         await instance.get(`/assets`)
             .then(response => response.data.data.filter((el: { rank: number; }) => el.rank <= portionNumber * 5 && el.rank > (portionNumber - 1) * 5))
+    )
+}
+export const getTopThreeCoins = () => {
+    return (
+         instance.get(`/assets`)
+            .then(response => response.data.data.filter((el: { rank: number; }) => el.rank < 4))
     )
 }

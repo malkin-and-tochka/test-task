@@ -10,7 +10,7 @@ const MainScreen: React.FC = () => {
         <div className={style.mainScreen}>
             <BrowserRouter>
                 <Routes>
-                    <Route path='/table' element={<Table portionContext={[]}/>}/>
+                    <Route path='/table' element={<Table/>}/>
                     <Route path='/currency-page/:coinId' element={<CurrencyPage/>}/>
                 </Routes>
             </BrowserRouter>

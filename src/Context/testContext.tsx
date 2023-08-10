@@ -1,25 +1,10 @@
-import React, {useState} from "react";
+import React from "react";
+import {CurrentCoinType} from "./ContextTypes";
 
-export type CurrentCoinType = {
-    changePercent24Hr: number
-    explorer: string
-    id: string
-    marketCapUsd: number
-    maxSupply: number
-    name: string
-    priceUsd: number
-    rank: number
-    supply: number
-    symbol: string
-    volumeUsd24Hr: number
-    vwap24Hr: number
-}
+
 type InitialStateType = {
     currentCoin: CurrentCoinType,
     pageCoins: CurrentCoinType []
-    setPageCoins: (pageCoins: CurrentCoinType [])=>void
-    setCurrentCoin: (rank: number) => void
-    getCoinById: (id: string) => CurrentCoinType
 }
 
 const setPageCoins = (newPageCoins: CurrentCoinType []) => {
@@ -32,7 +17,6 @@ const setCurrentCoin = (rank: number) => {
 }
 
 const getCoinById = (id: string) => {
-    console.log(initialState)
     return initialState.pageCoins.filter(coin => coin.id === id)[0]
 }
 
@@ -51,21 +35,25 @@ export const initialState: InitialStateType = {
         volumeUsd24Hr: 4330388412.1130873698778794,
         vwap24Hr: 29193.7508542854601593
     },
-    pageCoins: [],
-    setPageCoins,
-    setCurrentCoin,
-    getCoinById
+    pageCoins: []
 }
 
-export const TestContext = React.createContext(initialState);
 
-// const [updatedTestContext, setUpdatedTestContext] = useState(initialState)
-const value = {
+type ValueType = {
+    initialState: InitialStateType
+    setPageCoins: (pageCoins: CurrentCoinType [])=>void
+    setCurrentCoin: (rank: number) => void
+    getCoinById: (id: string) => CurrentCoinType
+}
+
+const value: ValueType = {
     initialState,
     setPageCoins,
     setCurrentCoin,
     getCoinById
 }
+
+export const TestContext = React.createContext(value);
 // @ts-ignore
 export const ContextComponentContainer = ({children}) => {
     // @ts-ignore

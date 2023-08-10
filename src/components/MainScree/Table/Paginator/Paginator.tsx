@@ -21,7 +21,7 @@ const Paginator: React.FC<PaginatorType> = ({currentPage, onPageChange}) => {
         .filter(p => p - 1 > leftBarrier && p <= rightBarrier)
         .map(p => {
             // @ts-ignore
-            return <span onClick={()=>{
+            return <span key={p} onClick={()=>{
                 onPageChange(p)
             }} className={(currentPage === p && style.selectPage) || style.pages}>{p}</span>
         })
