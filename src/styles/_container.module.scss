@@ -1,0 +1,12 @@
+@import '_constans';
+
+.container{
+  background: $container-color;
+  width: $container-width;
+  padding: 20px 0;
+  border-radius: 20px;
+  border: 2px solid $container-border-color;
+  height: auto;
+  display: table;
+  justify-self: center;
+}

@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+$bg-color: rgb(20,21,31);
+$text-color: #E6E2E9;
+
+.mainScreen{
+  background: $bg-color;
+  color: $text-color;
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(31deg, rgba(20,21,31,1) 0%, rgba(57,34,80,1) 38%, rgba(43,103,164,1) 68%, rgba(24,24,33,1) 100%);
+  display: grid;
+  grid: "header" 200px
+        "table" 10px / 1fr;
+}

@@ -1,0 +1,22 @@
+@use '../../../../styles/positive-button.module';
+
+a {
+  all: unset;
+}
+.row{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 60px;
+  span{
+    margin-left: 60px;
+    min-width: 80px;
+  }
+  border: 1px solid red;
+}
+.addButton{
+  height: 35px;
+  width: 35px;
+  justify-self: end;
+}

@@ -1,0 +1,18 @@
+@import 'constans.scss';
+
+.negativeButton{
+  background: $bg-button-ngtv;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+  box-shadow: none;
+  border: none;
+  font-size: 27px;
+  font-weight: 500;
+}
+
+.negativeButton:hover{
+  background: $bg-button-hover-ngtv;
+}

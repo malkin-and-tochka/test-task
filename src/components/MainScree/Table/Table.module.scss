@@ -1,0 +1,25 @@
+$table-color: #1C1A26;
+$table-width: 60%;
+$table-border-color: #35353C;
+
+.table{
+  background: $table-color;
+  width: $table-width;
+  padding: 20px 0;
+  border-radius: 20px;
+  border: 2px solid $table-border-color;
+  height: auto;
+  display: table;
+}
+
+.infoRow{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.tableContainer{
+  grid-area: table;
+  display: flex;
+  justify-content: center;
+}

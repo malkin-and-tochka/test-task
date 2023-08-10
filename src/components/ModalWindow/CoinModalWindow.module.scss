@@ -1,0 +1,36 @@
+@use '../../styles/positive-button.module';
+@use '../../styles/_negative-button.module';
+
+.modal{
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .modal__content{
+    padding: 15px;
+    border-radius: 10px;
+    background: #2E1340;
+    border: 2px solid #39124C;
+    .inputNum{
+      margin-left: 5px;
+    }
+    .addButton{
+      font-weight: 400;
+      font-size: 20px;
+    }
+    .negativeButton{
+
+      font-weight: 400;
+      font-size: 20px;
+    }
+    .subRow{
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
