@@ -1,1 +1,41 @@
 @use 'src/styles/_container.module';
+@use 'src/styles/_row.module';
+@use 'src/styles/_positive-button.module';
+@import 'src/styles/_constans.scss';
+
+.row {
+  justify-content: center;
+  margin-bottom: 20px;
+  align-items: center;
+  gap: 20px;
+}
+
+.table{
+  border-radius: 20px;
+  border: 2px solid $container-border-color;
+  padding: 5px 30px 5px 5px;
+}
+
+.addButton{
+  width: 30px;
+  height: 30px;
+}
+.addInput{
+  display: flex;
+  gap: 10px;
+  input{
+    width: 80px;
+    height: 30px;
+  }
+}
+.containerGraphics{
+  background: $container-color;
+  width: $container-width;
+  padding: 50px;
+  border-radius: 20px;
+  border: 2px solid $container-border-color;
+  height: auto;
+  display: table;
+  justify-self: center;
+  margin-left: 6%;
+}

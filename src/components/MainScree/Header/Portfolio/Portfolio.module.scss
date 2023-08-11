@@ -1,0 +1,8 @@
+@use 'src/styles/_container.module';
+
+.container{
+  background: linear-gradient(42deg, rgba(172,42,124,1) 8%, rgba(177,171,248,1) 53%, rgba(159,70,218,1) 93%);
+  border: none;
+  width: auto;
+  padding: 30px;
+}

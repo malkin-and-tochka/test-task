@@ -5,6 +5,7 @@ import CoinModalWindow from "../../ModalWindow/CoinModalWindow";
 import {getCoinsPortion} from "../../../api/api";
 import {TestContext} from "../../../Context/testContext";
 import Paginator from "./Paginator/Paginator";
+import {PortfolioContext} from "../../../Context/PortfolioContext";
 
 const Table: React.FC = () => {
     const [modalToggle, setModalToggle] = useState(false)
@@ -49,20 +50,19 @@ const Table: React.FC = () => {
     }
 
     return (
-        <div className={style.tableContainer}>
-            <div className={style.table}>
-                <div className={style.infoRow}>
-                    <span>Name</span>
-                    <span>Rank</span>
-                    <span>Price</span>
-                    <span></span>
+                <div className={style.tableContainer}>
+                    <div className={style.table}>
+                        <div className={style.infoRow}>
+                            <span>Name</span>
+                            <span>Rank</span>
+                            <span>Price</span>
+                            <span></span>
+                        </div>
+                        {CoinsElements}
+                        <Paginator onPageChange={onPageChange} currentPage={currentPage}/>
+                    </div>
+                    {modalToggle ? <CoinModalWindow removeWindow={removeWindow}/> : <></>}
                 </div>
-                {CoinsElements}
-                <Paginator onPageChange={onPageChange} currentPage={currentPage}/>
-            </div>
-            {modalToggle ? <CoinModalWindow removeWindow={removeWindow}/> : <></>}
-        </div>
-
     );
 };
 
