@@ -8,17 +8,11 @@ type ModalPortfolioType = {
 }
 
 const ModalPortfolio: React.FC<ModalPortfolioType> = ({setPortfolioModalWindow}) => {
-    const portfolioContext = useContext(PortfolioContext)
-
-    // const portfolioCoinsComponent = portfolioContext.initialState.currentCoins.map(el =>
-    //     <PortfolioCoin
-    //         coin={el.coin}
-    //         amount={el.amount}
-    //     />)
-
     const testFunc = (theme: { initialState: { currentCoins: { coin: CurrentCoinType; amount: number; }[]; }; }) => {
         return theme.initialState.currentCoins.map((el: { coin: CurrentCoinType; amount: number; }) =>
             <PortfolioCoin
+                //@ts-ignore
+                id={el.id}
                 coin={el.coin}
                 amount={el.amount}
             />)
@@ -48,7 +42,6 @@ const ModalPortfolio: React.FC<ModalPortfolioType> = ({setPortfolioModalWindow})
 const PortfolioCoin: React.FC<CurrentPortfolio> = ({coin, amount}) => {
     const portfolioContext = useContext(PortfolioContext)
     const onClick = () => {
-        console.log('remove')
         portfolioContext.removeCoinFromPortfolio(coin, amount)
     }
     return (

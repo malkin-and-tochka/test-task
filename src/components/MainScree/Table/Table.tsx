@@ -30,11 +30,18 @@ const Table: React.FC = () => {
     const removeWindow = () => setModalToggle(false)
     const openModalWindow = () => {
         setModalToggle(!modalToggle)
-        console.log("click")
     }
-
-    const CoinsElements = portionCoins?.map((item: { id: string; priceUsd: number; rank: number; }) => <Row
-        name={item.id} price={item.priceUsd} rank={item.rank} key={item.id} setModalToggle={openModalWindow}/>)
+    const CoinsElements = portionCoins?.map((item: {
+        symbol: any;
+        id: string; priceUsd: number; rank: number; }) =>
+        <Row
+            name={item.id}
+            price={item.priceUsd}
+            rank={item.rank}
+            key={item.id}
+            setModalToggle={openModalWindow}
+            symbol={item.symbol}
+        />)
 
     const onPageChange = (page: number) => {
         async function fetchData() {
@@ -48,21 +55,29 @@ const Table: React.FC = () => {
         fetchData();
 
     }
+    const onButtonClick = () => {
+        if (setModalToggle) {
+            setModalToggle(true)
+        }
+    }
 
     return (
-                <div className={style.tableContainer}>
-                    <div className={style.table}>
-                        <div className={style.infoRow}>
-                            <span>Name</span>
-                            <span>Rank</span>
-                            <span>Price</span>
-                            <span></span>
-                        </div>
-                        {CoinsElements}
-                        <Paginator onPageChange={onPageChange} currentPage={currentPage}/>
+        <div className={style.tableContainer}>
+            <div className={style.table}>
+                <div className={style.row}>
+                    <div className={style.row}>
+                        <span>Symbol</span>
+                        <span>Name</span>
+                        <span>Top</span>
+                        <span>Price</span>
                     </div>
-                    {modalToggle ? <CoinModalWindow removeWindow={removeWindow}/> : <></>}
+                    <button onClick={onButtonClick} className={style.addButton}>+</button>
                 </div>
+                {CoinsElements}
+                <Paginator onPageChange={onPageChange} currentPage={currentPage}/>
+            </div>
+            {modalToggle ? <CoinModalWindow removeWindow={removeWindow}/> : <></>}
+        </div>
     );
 };
 

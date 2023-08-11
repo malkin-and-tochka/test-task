@@ -9,9 +9,10 @@ type PropsType = {
     rank: number,
     key: string,
     setModalToggle?: (state: boolean) => void
+    symbol: string
 }
 
-const Row: React.FC<PropsType> = ({name, price, rank, key, setModalToggle}) => {
+const Row: React.FC<PropsType> = ({name, price, rank, key, setModalToggle, symbol}) => {
 
     const context = useContext(TestContext)
 
@@ -28,10 +29,11 @@ const Row: React.FC<PropsType> = ({name, price, rank, key, setModalToggle}) => {
 
     return (
         <div key={key} className={style.row}>
-            <NavLink onClick={onClick} to={'/currency-page/' + name}>
+            <NavLink className={style.row} onClick={onClick} to={'/currency-page/' + name}>
+                <span>{symbol}</span>
                 <span>{name}</span>
                 <span>{rank}</span>
-                <span>{price}</span>
+                <span>{parseFloat(String(price)).toFixed(2)}</span>
             </NavLink>
             <button onClick={onButtonClick} className={style.addButton}>+</button>
         </div>

@@ -1,13 +1,13 @@
-$table-color: #1C1A26;
-$table-width: 80%;
-$table-border-color: #35353C;
+@use 'src/styles/_row.module';
+@use 'src/styles/_positive-button.module';
+@import 'src/styles/_constans';
 
 .table{
-  background: $table-color;
-  width: $table-width;
+  background: $container-color;
+  width: $container-width;
   padding: 20px 0;
   border-radius: 20px;
-  border: 2px solid $table-border-color;
+  border: 2px solid $container-border-color;
   height: auto;
   display: table;
 }
@@ -22,4 +22,27 @@ $table-border-color: #35353C;
   grid-area: table;
   display: flex;
   justify-content: center;
+}
+.table{
+  border-radius: 20px;
+  border: 2px solid $container-border-color;
+  padding: 5px 30px 5px 5px;
+}
+
+.row{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 60px 5px 0;
+  span{
+    margin-left: 60px;
+    min-width: 80px;
+  }
+}
+.addButton{
+  height: 35px;
+  width: 35px;
+  justify-self: end;
+  visibility: hidden;
 }

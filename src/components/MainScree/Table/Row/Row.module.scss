@@ -1,5 +1,5 @@
-@use '../../../../styles/positive-button.module';
-
+@use 'src/styles/positive-button.module';
+@use 'src/styles/_row.module';
 a {
   all: unset;
 }

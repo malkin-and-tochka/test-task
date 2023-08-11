@@ -37,7 +37,6 @@ const Graphics: React.FC<GraphicsType> = ({coin}) => {
             try {
                 getCoinHistory(coin.id)
                     .then(response => {
-                        console.log(response[0])
                         setData({
                             labels: response.map((el: any) => {
                                 const time = new Date(el.date)
