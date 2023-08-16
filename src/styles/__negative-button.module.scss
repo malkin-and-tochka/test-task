@@ -1,18 +1,46 @@
 @import 'constans.scss';
 
-.negativeButton{
-  background: $bg-button-ngtv;
-  border-radius: 20px;
-  display: flex;
+.negativeButton {
+  background: rgb(172,42,124);
+  background: linear-gradient(15deg, rgba(172,42,124,1) 8%, rgba(163,77,219,1) 93%);
+
   align-items: center;
+  appearance: none;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgb(172,42,124, 0.1) 0 2px 4px, rgb(172,42,124, 0.1) 0 7px 13px -3px, rgb(172,42,124, 0.1) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  height: 30px;
   justify-content: center;
-  transition: 0.2s;
-  box-shadow: none;
-  border: none;
-  font-size: 27px;
-  font-weight: 500;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s, transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 16px;
 }
 
-.negativeButton:hover{
-  background: $bg-button-hover-ngtv;
+.negativeButton:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgb(172,42,124, 0.1) 0 2px 4px, rgb(172,42,124, 0.1) 0 7px 13px -3px, rgb(172,42,124, 0.1) 0 -3px 0 inset;
+}
+
+.negativeButton:hover {
+  box-shadow: rgb(172,42,124, 0.1) 0 4px 8px, rgb(172,42,124, 0.1) 0 7px 13px -3px, rgb(172,42,124) 0 -3px 0 inset;
+}
+
+.negativeButton:active {
+  box-shadow: rgb(172,42,124, 0.1) 0 3px 7px inset;
 }

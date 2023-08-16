@@ -5,12 +5,12 @@ import CoinModalWindow from "../../ModalWindow/CoinModalWindow";
 import {getCoinsPortion} from "../../../api/api";
 import {TestContext} from "../../../Context/testContext";
 import Paginator from "./Paginator/Paginator";
-import {PortfolioContext} from "../../../Context/PortfolioContext";
+import {CurrentCoinType} from "../../../Context/ContextTypes";
 
 const Table: React.FC = () => {
-    const [modalToggle, setModalToggle] = useState(false)
-    const [currentPage, serCurrentPage] = useState(1)
-    const [portionCoins, setPortionCoins] = useState([])
+    const [modalToggle, setModalToggle] = useState<boolean>(false)
+    const [currentPage, serCurrentPage] = useState<number>(1)
+    const [portionCoins, setPortionCoins] = useState<CurrentCoinType [] | undefined>([])
 
     const context = useContext(TestContext)
 
@@ -51,9 +51,7 @@ const Table: React.FC = () => {
                 console.log(err);
             }
         }
-
         fetchData();
-
     }
     const onButtonClick = () => {
         if (setModalToggle) {

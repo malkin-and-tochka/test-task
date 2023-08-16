@@ -14,11 +14,10 @@ const setTopThreeCoins = (newTopThreeCoins: CurrentCoinType []) => {
     initialState.TopThreeCoins = newTopThreeCoins
 }
 
-
 //-------------------final value-------------------
 type ValueType = {
     initialState: InitialStateType
-    setTopThreeCoins: (newTopThreeCoins: CurrentCoinType [])=>void
+    setTopThreeCoins: (newTopThreeCoins: CurrentCoinType []) => void
 }
 
 const value: ValueType = {

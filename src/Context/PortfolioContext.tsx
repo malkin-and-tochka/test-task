@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {CurrentCoinType} from "./ContextTypes";
 import {addSessionPortfolioPrice} from "./TempPortfolioPrice";
 
@@ -75,5 +75,7 @@ const portfolioState: PortfolioStateType = {
 export const PortfolioContext = React.createContext(portfolioState);
 
 export const PortfolioContextComponentContainer = ({children}: any) => {
-    return <PortfolioContext.Provider value={portfolioState}>{children}</PortfolioContext.Provider>
+    const [data, setData] = useState(portfolioState)
+
+    return <PortfolioContext.Provider value={data}>{children}</PortfolioContext.Provider>
 }

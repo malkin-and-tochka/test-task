@@ -5,17 +5,15 @@ import {getTopThreeCoins} from "../../../api/api";
 import {CurrentCoinType} from "../../../Context/ContextTypes";
 import TopCoins from "./ TopCoins/TopCoins";
 import Portfolio from "./Portfolio/Portfolio";
-import {PortfolioContext} from "../../../Context/PortfolioContext";
 
 type HeaderType = {
-    setPortfolioModalWindow: (bool:boolean)=>void
+    setPortfolioModalWindow: (bool: boolean) => void
 }
 
 const Header: React.FC<HeaderType> = ({setPortfolioModalWindow}) => {
     const headerContext = useContext(HeaderContext)
     const [newTopThreeCoins, setNewTopThreeCoins] = useState<CurrentCoinType []>([])
 
-    const portfolioContext = useContext(PortfolioContext)
     useEffect(() => {
         async function fetchData() {
             try {
@@ -24,6 +22,7 @@ const Header: React.FC<HeaderType> = ({setPortfolioModalWindow}) => {
                 console.log(err);
             }
         }
+
         fetchData()
     }, [])
     headerContext.setTopThreeCoins(newTopThreeCoins)

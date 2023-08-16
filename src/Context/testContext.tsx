@@ -7,13 +7,15 @@ type InitialStateType = {
     pageCoins: CurrentCoinType []
 }
 
-const setPageCoins = (newPageCoins: CurrentCoinType []) => {
-    initialState.pageCoins = newPageCoins
+const setPageCoins = (newPageCoins: CurrentCoinType [] | undefined) => {
+    if (newPageCoins){
+        initialState.pageCoins = newPageCoins
+    }
 }
 
 const setCurrentCoin = (rank: number) => {
     const tempPageCoins = initialState.pageCoins
-    initialState.currentCoin =  tempPageCoins.filter(coin => coin.rank === rank)[0]
+    initialState.currentCoin = tempPageCoins.filter(coin => coin.rank === rank)[0]
 }
 
 const getCoinById = (id: string) => {
@@ -41,7 +43,7 @@ export const initialState: InitialStateType = {
 
 type ValueType = {
     initialState: InitialStateType
-    setPageCoins: (pageCoins: CurrentCoinType [])=>void
+    setPageCoins: (pageCoins: CurrentCoinType [] | undefined) => void
     setCurrentCoin: (rank: number) => void
     getCoinById: (id: string) => CurrentCoinType
 }

@@ -21,15 +21,17 @@ const ModalPortfolio: React.FC<ModalPortfolioType> = ({setPortfolioModalWindow})
     return (
         <PortfolioContext.Consumer>
             {theme =>
-                <div className={style.modal}>
-                    <div className={style.modal__content}>
+                <div onClick={() => {
+                    setPortfolioModalWindow(false)
+                }} className={style.modal}>
+                    <div onClick={e => e.stopPropagation()} className={style.modal__content}>
                         <div className={style.row}>
                             <span>Name</span>
                             <span>Amount</span>
                             <span>Total price</span>
                         </div>
                         {testFunc(theme)}
-                        <button onClick={() => {
+                        <button className={style.defaultButton} onClick={() => {
                             setPortfolioModalWindow(false)
                         }}>Go back
                         </button>
@@ -49,7 +51,7 @@ const PortfolioCoin: React.FC<CurrentPortfolio> = ({coin, amount}) => {
             <span>{coin.name}</span>
             <span>{amount}</span>
             <span>{parseFloat(String(coin.priceUsd * amount)).toFixed(2)}</span>
-            <button onClick={onClick}>Remove coin</button>
+            <button className={style.negativeButton} onClick={onClick}>Remove coin</button>
         </div>
     )
 }

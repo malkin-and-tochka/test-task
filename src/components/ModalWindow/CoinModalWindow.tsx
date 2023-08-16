@@ -1,8 +1,7 @@
 import React, {useContext, useState} from 'react';
 import style from './CoinModalWindow.module.scss'
 import {TestContext} from "../../Context/testContext";
-import {CurrentPortfolio, PortfolioContext} from "../../Context/PortfolioContext";
-import {CurrentCoinType} from "../../Context/ContextTypes";
+import {PortfolioContext} from "../../Context/PortfolioContext";
 
 type CoinModalWindowType = {
     removeWindow: () => void
@@ -17,14 +16,14 @@ const CoinModalWindow: React.FC<CoinModalWindowType> = ({removeWindow}) => {
         setValue(0)
     }
     return (
-        <div className={style.modal}>
-            <div className={style.modal__content}>
+        <div onClick={removeWindow} className={style.modal}>
+            <div onClick={e => e.stopPropagation()} className={style.modal__content}>
                 {context.initialState.currentCoin.name}
                 {/*// @ts-ignore*/}
                 <input onChange={e => setValue(e.target.value)} value={value} className={style.inputNum}
                        placeholder={"Enter desired number"} type='number'/>
                 <div className={style.subRow}>
-                    <button className={style.addButton} onClick={onClick}>Add in portfolio</button>
+                    <button className={style.defaultButton} onClick={onClick}>Add in portfolio</button>
                     <button className={style.negativeButton} onClick={removeWindow}>cancel</button>
                 </div>
             </div>
